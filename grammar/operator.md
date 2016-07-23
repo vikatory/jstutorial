@@ -1001,46 +1001,46 @@ flags = ~flags;
 
 把表达式放在圆括号之中，将返回表达式的值。
 
-{% highlight javascript %}
+```javascript
 
 (1) // 1
 ('a') // a
 (1+2) // 3
 
-{% endhighlight %}
+```
 
 把对象放在圆括号之中，则会返回对象的值，即对象本身。
 
-{% highlight javascript %}
+```javascript
 
 var o = {p:1};
 
 (o)
 // Object {p: 1}
 
-{% endhighlight %}
+```
 
 将函数放在圆括号中，会返回函数本身。如果圆括号紧跟在函数的后面，就表示调用函数，即对函数求值。
 
-{% highlight javascript %}
+```javascript
 
 function f(){return 1;}
 
 (f) // function f(){return 1;}
 f() // 1
 
-{% endhighlight %}
+```
 
 上面的代码先定义了一个函数，然后依次将函数放在圆括号之中、将圆括号跟在函数后面，得到的结果是不一样的。
 
 由于圆括号的作用是求值，如果将语句放在圆括号之中，就会报错，因为语句没有返回值。
 
-{% highlight javascript %}
+```javascript
 
 (var a = 1)
 // SyntaxError: Unexpected token var
 
-{% endhighlight %}
+```
 
 ### void运算符
 

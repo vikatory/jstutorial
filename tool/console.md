@@ -269,21 +269,21 @@ console.dir(document.body)
 
 assert方法接受两个参数，第一个参数是表达式，第二个参数是字符串。只有当第一个参数为false，才会输出第二个参数，否则不会有任何结果。
 
-{% highlight javascript %}
+```javascript
 
 // 实例
 console.assert(true === false, "判断条件不成立")
 // Assertion failed: 判断条件不成立
 
-{% endhighlight %}
+```
 
 下面是另一个例子，判断子节点的个数是否大于等于500。
 
-{% highlight javascript %}
+```javascript
 
 console.assert(list.childNodes.length < 500, "节点个数大于等于500")
 
-{% endhighlight %}
+```
 
 ### time()，timeEnd()
 
@@ -380,14 +380,14 @@ console.clear方法用于清除当前控制台的所有输出，将光标回置�
 
 $_属性返回上一个表达式的值。
 
-{% highlight javascript %}
+```javascript
 
 2+2
 // 4
 $_
 // 4
 
-{% endhighlight %}
+```
 
 （2）$0 - $4
 
@@ -455,12 +455,12 @@ monitorEvents(window, ["resize", "scroll"])
 
 上面代码分别表示单个事件和多个事件的监听方法。
 
-{% highlight javascript %}
+```javascript
 
 monitorEvents($0, "mouse");
 unmonitorEvents($0, "mousemove");
 
-{% endhighlight %}
+```
 
 上面代码表示如何停止监听。
 
@@ -471,11 +471,11 @@ monitorEvents允许监听同一大类的事件。所有事件可以分成四个�
 - touch："touchstart", "touchmove", "touchend", "touchcancel"
 - control："resize", "scroll", "zoom", "focus", "blur", "select", "change", "submit", "reset"
 
-{% highlight javascript %}
+```javascript
 
 monitorEvents($("#msg"), "key");
 
-{% endhighlight %}
+```
 
 上面代码表示监听所有key大类的事件。
 
@@ -483,13 +483,13 @@ monitorEvents($("#msg"), "key");
 
 profile方法用于启动一个特定名称的CPU性能测试，profileEnd方法用于结束该性能测试。
 
-{% highlight javascript %}
+```javascript
 
 profile("My profile")
 
 profileEnd("My profile")
 
-{% endhighlight %}
+```
 
 （11）其他方法
 
@@ -575,35 +575,35 @@ Google Closure使用Java语言开发，使用之前必须先安装Java。然后�
 
 首先，查看使用帮助。
 
-{% highlight bash %}
+```bash
 
 java -jar /path/to/closure/compiler.jar --help
 
-{% endhighlight %}
+```
 
 直接在脚本命令后面跟上要合并的脚本，就能完成合并。
 
-{% highlight bash %}
+```bash
 
 java -jar /path/to/closure/compiler.jar *.js
 
-{% endhighlight %}
+```
 
 使用--js参数，可以确保按照参数的先后次序合并文件。
 
-{% highlight bash %}
+```bash
 
 java -jar /path/to/closure/compiler.jar --js script1.js --js script2.js --js script3.js
 
-{% endhighlight %}
+```
 
 但是，这样的运行结果是将合并后的文件全部输出到屏幕（标准输出），因此需要使用--js_output_file参数，指定合并后的文件名。
 
-{% highlight bash %}
+```bash
 
 java -jar /path/to/closure/compiler.jar --js script1.js --js script2.js --js script3.js --js_output_file scripts-compiled.js
 
-{% endhighlight %}
+```
 
 ## Javascript 性能测试
 
@@ -613,7 +613,7 @@ java -jar /path/to/closure/compiler.jar --js script1.js --js script2.js --js scr
 
 最常见的测试性能的做法，就是同一操作重复n次，然后计算每次操作的平均时间。
 
-{% highlight javascript %}
+```javascript
 
 var totalTime,
     start = new Date,
@@ -627,7 +627,7 @@ while (iterations--) {
 // the code snippet 6 times
 totalTime = new Date - start;
 
-{% endhighlight %}
+```
 
 上面代码的问题在于，由于计算机的性能不断提高，如果只重复6次，很可能得到0毫秒的结果，即不到1毫秒，Javascript引擎无法测量。
 
@@ -635,7 +635,7 @@ totalTime = new Date - start;
 
 另一种思路是，测试单位时间内完成了多少次操作。
 
-{% highlight javascript %}
+```javascript
 
 var hz,
     period,
@@ -660,7 +660,7 @@ hz = 1 / period;
 // can be shortened to
 // hz = (runs * 1000) / totalTime;
 
-{% endhighlight %}
+```
 
 这种做法的注意之处在于，测试结构受外界环境影响很大，为了得到正确结构，必须重复多次。
 

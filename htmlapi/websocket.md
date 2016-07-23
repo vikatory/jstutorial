@@ -59,23 +59,23 @@ WebSocket协议需要服务器支持，目前比较流行的实现是基于node.
 
 首先，客户端要检查浏览器是否支持WebSocket，使用的方法是查看window对象是否具有WebSocket属性。
 
-{% highlight javascript	%}
+```javascript
 
 if(window.WebSocket != undefined) {
 	// WebSocket代码
 }
 
-{% endhighlight %}
+```
 
 然后，开始与服务器建立连接（这里假定服务器就是本机的1740端口，需要使用ws协议）。
 
-{% highlight javascript	%}
+```javascript
 
 if(window.WebSocket != undefined) {
 	var connection = new WebSocket('ws://localhost:1740');
 }
 
-{% endhighlight %}
+```
 
 建立连接以后的WebSocket实例对象（即上面代码中的connection），有一个readyState属性，表示目前的状态，可以取4个值：
 
@@ -86,7 +86,7 @@ if(window.WebSocket != undefined) {
 
 握手协议成功以后，readyState就从0变为1，并触发open事件，这时就可以向服务器发送信息了。我们可以指定open事件的回调函数。
 
-{% highlight javascript	%}
+```javascript
 
 connection.onopen = wsOpen;
 
@@ -94,11 +94,11 @@ function wsOpen (event) {
 	console.log('Connected to: ' + event.currentTarget.URL);
 }
 
-{% endhighlight %}
+```
 
 关闭WebSocket连接，会触发close事件。
 
-{% highlight javascript	%}
+```javascript
 
 connection.onclose = wsClose;
 
@@ -108,21 +108,21 @@ function wsClose () {
 
 connection.close();
 
-{% endhighlight %}
+```
 
 ### 发送数据和接收数据
 
 连接建立后，客户端通过send方法向服务器端发送数据。
 
-{% highlight javascript	%}
+```javascript
 
 connection.send(message);
 
-{% endhighlight %}
+```
 
 除了发送字符串，也可以使用 Blob 或 ArrayBuffer 对象发送二进制数据。
 
-{% highlight javascript	%}
+```javascript
 
 // 使用ArrayBuffer发送canvas图像数据
 var img = canvas_context.getImageData(0, 0, 400, 320);
@@ -136,11 +136,11 @@ connection.send(binary.buffer);
 var file = document.querySelector('input[type="file"]').files[0];
 connection.send(file);
 
-{% endhighlight %}
+```
 
 客户端收到服务器发送的数据，会触发message事件。可以通过定义message事件的回调函数，来处理服务端返回的数据。
 
-{% highlight javascript %}
+```javascript
 
 connection.onmessage = wsMessage;
 
@@ -148,7 +148,7 @@ function wsMessage (event) {
 	console.log(event.data);
 }
 
-{% endhighlight %}
+```
 
 上面代码的回调函数wsMessage的参数为事件对象event，该对象的data属性包含了服务器返回的数据。
 
@@ -168,7 +168,7 @@ connection.onmessage = function(e) {
 
 如果出现错误，浏览器会触发WebSocket实例对象的error事件。
 
-{% highlight javascript %}
+```javascript
 
 connection.onerror = wsError;
 
@@ -176,43 +176,43 @@ function wsError(event) {
 	console.log("Error: " + event.data);
 }
 
-{% endhighlight %}
+```
 
 ## 服务器端
 
 服务器端需要单独部署处理WebSocket的代码。下面用node.js搭建一个服务器环境。
 
-{% highlight javascript	%}
+```javascript
 
 var http = require('http');
 var server = http.createServer(function(request, response) {});
 
-{% endhighlight %}
+```
 
 假设监听1740端口。
 
-{% highlight javascript	%}
+```javascript
 
 server.listen(1740, function() {
     console.log((new Date()) + ' Server is listening on port 1740');
 });
 
-{% endhighlight %}
+```
 
 接着启动WebSocket服务器。这需要加载websocket库，如果没有安装，可以先使用npm命令安装。
 
-{% highlight javascript	%}
+```javascript
 
 var WebSocketServer = require('websocket').server;
 var wsServer = new WebSocketServer({
     httpServer: server
 });
 
-{% endhighlight %}
+```
 
 WebSocket服务器建立request事件的回调函数。
 
-{% highlight javascript	%}
+```javascript
 
 var connection;
 
@@ -220,11 +220,11 @@ wsServer.on('request', function(req){
     connection = req.accept('echo-protocol', req.origin);
 });
 
-{% endhighlight %}
+```
 
 上面代码的回调函数接受一个参数req，表示request请求对象。然后，在回调函数内部，建立WebSocket连接connection。接着，就要对connection的message事件指定回调函数。
 
-{% highlight javascript	%}
+```javascript
 
 wsServer.on('request', function(r){
     connection = req.accept('echo-protocol', req.origin);
@@ -235,17 +235,17 @@ wsServer.on('request', function(r){
 	});
 });
 
-{% endhighlight %}
+```
 
 最后，监听用户的disconnect事件。
 
-{% highlight javascript	%}
+```javascript
 
 connection.on('close', function(reasonCode, description) {
     console.log(connection.remoteAddress + ' disconnected.');
 });
 
-{% endhighlight %}
+```
 
 使用[ws](https://github.com/einaros/ws)模块，部署一个简单的WebSocket服务器非常容易。
 

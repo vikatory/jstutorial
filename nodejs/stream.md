@@ -756,15 +756,15 @@ writeStream.on('error', function (err) {
 
 上面代码非常容易理解，使用的时候直接提供源文件路径和目标文件路径，就可以了。
 
-{% highlight bash %}
+```bash
 
 node cp.js src.txt dest.txt
 
-{% endhighlight %}
+```
 
 Streams对象都具有pipe方法，起到管道作用，将一个数据流输入另一个数据流。所以，上面代码可以重写成下面这样：
 
-{% highlight javascript %}
+```javascript
 
 var fs = require('fs');
 console.log(process.argv[2], '->', process.argv[3]);
@@ -780,7 +780,7 @@ readStream.on('end', function () {
   writeStream.end();
 });
 
-{% endhighlight %}
+```
 
 ## 错误处理
 

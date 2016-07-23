@@ -117,7 +117,7 @@ document.addEventListener("fullscreenchange", function( event ) {
 
 全屏状态下，大多数浏览器的CSS支持`:full-screen`伪类，只有IE11支持`:fullscreen`伪类。使用这个伪类，可以对全屏状态设置单独的CSS属性。
 
-{% highlight css %}
+```css
 
 :-webkit-full-screen {
   /* properties */
@@ -145,7 +145,7 @@ document.addEventListener("fullscreenchange", function( event ) {
   height: 100%;
 }
 
-{% endhighlight %}
+```
 
 ## 参考链接
 

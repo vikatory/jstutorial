@@ -267,7 +267,7 @@ JSON.stringify(/foo/)
 
 JSON.parse方法用于将JSON字符串转化成对象。
 
-{% highlight javascript %}
+```javascript
 
 JSON.parse('{}') // {}
 JSON.parse('true') // true
@@ -278,16 +278,16 @@ JSON.parse('null') // null
 var o = JSON.parse('{"name":"张三"}');
 o.name // 张三
 
-{% endhighlight %}
+```
 
 如果传入的字符串不是有效的JSON格式，JSON.parse方法将报错。
 
-{% highlight javascript %}
+```javascript
 
 JSON.parse("'String'") // illegal single quotes
 // SyntaxError: Unexpected token ILLEGAL
 
-{% endhighlight %}
+```
 
 上面代码中，双引号字符串中是一个单引号字符串，因为单引号字符串不符合JSON格式，所以报错。
 
@@ -295,7 +295,7 @@ JSON.parse("'String'") // illegal single quotes
 
 JSON.parse方法可以接受一个处理函数，用法与JSON.stringify方法类似。
 
-{% highlight javascript %}
+```javascript
 
 function f(key, value) {
   if ( key === ""){
@@ -310,7 +310,7 @@ var o = JSON.parse('{"a":1,"b":2}', f);
 o.a // 11
 o.b // undefined
 
-{% endhighlight %}
+```
 
 ## 参考链接
 

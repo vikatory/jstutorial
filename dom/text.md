@@ -12,7 +12,7 @@ modifiedOn: 2015-05-01
 
 通常我们使用`Node`节点的`firstChild`、`nextSibling`等属性获取`Text`节点，或者使用`Document`节点的`createTextNode`方法创造一个`Text`节点。
 
-{% highlight javascript %}
+```javascript
 
 // 获取Text节点
 var textNode = document.querySelector('p').firstChild;
@@ -21,7 +21,7 @@ var textNode = document.querySelector('p').firstChild;
 var textNode = document.createTextNode('Hi');
 document.querySelector('div').appendChild(textNode);
 
-{% endhighlight %}
+```
 
 浏览器原生提供一个Text构造函数。它返回一个Text节点。它的参数就是该Text节点的文本内容。
 
@@ -40,7 +40,7 @@ Text节点除了继承Node节点的属性和方法，还继承了CharacterData�
 
 data属性等同于nodeValue属性，用来设置或读取Text节点的内容。
 
-{% highlight javascript %}
+```javascript
 
 // 读取文本内容
 document.querySelector('p').firstChild.data
@@ -50,7 +50,7 @@ document.querySelector('p').firstChild.nodeValue
 // 设置文本内容
 document.querySelector('p').firstChild.data = 'Hello World';
 
-{% endhighlight %}
+```
 
 ### wholeText
 
@@ -119,7 +119,7 @@ replaceData方法用于替换文本，第一个参数为替换开始位置，第
 
 subStringData方法用于获取子字符串，第一个参数为子字符串在Text节点中的开始位置，第二个参数为子字符串长度。
 
-{% highlight javascript %}
+```javascript
 
 // HTML代码为
 // <p>Hello World</p>
@@ -136,7 +136,7 @@ pElementText.replaceData(7,5,'World');
 pElementText.substringData(7,10);
 // 页面显示不变，返回"World "
 
-{% endhighlight %}
+```
 
 ### remove()
 
@@ -157,7 +157,7 @@ splitText方法将Text节点一分为二，变成两个毗邻的Text节点。它
 
 分割后，该方法返回分割位置后方的字符串，而原Text节点变成只包含分割位置前方的字符串。
 
-{% highlight javascript %}
+```javascript
 
 // html代码为 <p id="p">foobar</p>
 var p = document.getElementById('p');
@@ -167,7 +167,7 @@ var newText = textnode.splitText(3);
 newText // "bar"
 textnode // "foo"
 
-{% endhighlight %}
+```
 
 normalize方法可以将毗邻的两个Text节点合并。
 
@@ -187,7 +187,7 @@ DocumentFragment节点代表一个文档的片段，本身就是一个完整的D
 
 它一般用于构建一个DOM结构，然后插入当前文档。document.createDocumentFragment方法，以及浏览器原生的DocumentFragment构造函数，可以创建一个空的DocumentFragment节点。然后再使用其他DOM方法，向其添加子节点。
 
-{% highlight javascript %}
+```javascript
 
 var docFrag = document.createDocumentFragment();
 // or
@@ -199,7 +199,7 @@ docFrag.appendChild(li);
 
 document.queryselector('ul').appendChild(docFrag);
 
-{% endhighlight %}
+```
 
 上面代码创建了一个DocumentFragment节点，然后将一个li节点添加在它里面，最后将DocumentFragment节点移动到原文档。
 

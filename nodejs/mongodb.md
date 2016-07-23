@@ -452,28 +452,28 @@ $ mongoimport --db test --collection restaurants --drop --file primer-dataset.js
 
 首先，在项目目录将Mongoose安装为本地模块。
 
-{% highlight bash %}
+```bash
 
 npm install mongoose --save
 
-{% endhighlight %}
+```
 
 然后，就可以在node.js脚本中连接MongoDB数据库了。
 
-{% highlight javascript %}
+```javascript
 
 var mongoose = require('mongoose');
 
 // 连接字符串格式为mongodb://主机/数据库名
 mongoose.connect('mongodb://localhost/mydatabase');
 
-{% endhighlight %}
+```
 
 注意，运行上面这个脚本时，必须确保MongoDB处于运行中。
 
 数据库连接后，可以对open和error事件指定监听函数。
 
-{% highlight javascript %}
+```javascript
 
 var db = mongoose.connection;
 
@@ -485,7 +485,7 @@ db.once('open', function callback () {
   console.log("Mongo working!");
 });
 
-{% endhighlight %}
+```
 
 mongoose.Schema方法用来定义数据集的格式（schema），mongoose.model方法将格式分配给指定的数据集。
 

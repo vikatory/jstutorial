@@ -69,13 +69,13 @@ history.pushState方法接受三个参数，依次为：
 
 假定当前网址是`example.com/1.html`，我们使用pushState方法在浏览记录（history对象）中添加一个新记录。
 
-{% highlight javascript %}
+```javascript
 
 var stateObj = { foo: "bar" };
 
 history.pushState(stateObj, "page 2", "2.html");
 
-{% endhighlight %}
+```
 
 添加上面这个新记录后，浏览器地址栏立刻显示`example.com/2.html`，但并不会跳转到2.html，甚至也不会检查2.html是否存在，它只是成为浏览历史中的最新记录。假定这时你访问了google.com，然后点击了倒退按钮，页面的url将显示2.html，但是内容还是原来的1.html。你再点击一次倒退按钮，url将显示1.html，内容不变。
 
@@ -118,7 +118,7 @@ history.state
 
 使用的时候，可以为popstate事件指定回调函数。这个回调函数的参数是一个event事件对象，它的state属性指向pushState和replaceState方法为当前url所提供的状态对象（即这两个方法的第一个参数）。
 
-{% highlight javascript %}
+```javascript
 
 window.onpopstate = function(event) {
   console.log("location: " + document.location);
@@ -132,17 +132,17 @@ window.addEventListener('popstate', function(event) {
   console.log("state: " + JSON.stringify(event.state));  
 });
 
-{% endhighlight %}
+```
 
 上面代码中的event.state，就是通过pushState和replaceState方法，为当前url绑定的state对象。
 
 这个state对象也可以直接通过history对象读取。
 
-{% highlight javascript %}
+```javascript
 
 var currentState = history.state;
 
-{% endhighlight %}
+```
 
 另外，需要注意的是，当页面第一次加载的时候，在onload事件发生后，Chrome和Safari浏览器（Webkit核心）会触发popstate事件，而Firefox和IE浏览器不会。
 

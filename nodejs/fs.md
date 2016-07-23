@@ -99,7 +99,7 @@ fs.writeFile('./helloDir/message.txt', 'Hello Node', function (err) {
 
 readfile方法用于读取文件内容。
 
-{% highlight javascript %}
+```javascript
 
 var fs = require('fs');
 
@@ -108,7 +108,7 @@ fs.readFile('./helloDir/message.txt','UTF-8' ,function (err, data) {
   console.log(data);
 });
 
-{% endhighlight %}
+```
 
 上面代码使用readFile方法读取文件。readFile方法的第一个参数是文件名，第二个参数是文件编码，第三个参数是回调函数。可用的文件编码包括“ascii”、“utf8”和“base64”。如果没有指定文件编码，返回的是原始的缓存二进制数据，这时需要调用buffer对象的toString方法，将其转为字符串。
 
@@ -138,7 +138,7 @@ for(var i = 1; i <= 1000; i++) {
 
 这三个方法是建立目录、写入文件、读取文件的同步版本。
 
-{% highlight javascript %}
+```javascript
 
 fs.mkdirSync('./helloDirSync',0777);
 fs.writeFileSync('./helloDirSync/message.txt', 'Hello Node');
@@ -146,7 +146,7 @@ var data = fs.readFileSync('./helloDirSync/message.txt','UTF-8');
 console.log('file created with contents:');
 console.log(data);
 
-{% endhighlight %}
+```
 
 对于流量较大的服务器，最好还是采用异步操作，因为同步操作时，只有前一个操作结束，才会开始后一个操作，如果某个操作特别耗时（常常发生在读写数据时），会导致整个程序停顿。
 
@@ -154,7 +154,7 @@ console.log(data);
 
 readdir方法用于读取目录，返回一个所包含的文件和子目录的数组。
 
-{% highlight javascript %}
+```javascript
 
 fs.readdir(process.cwd(), function (err, files) {
   if (err) {
@@ -175,7 +175,7 @@ fs.readdir(process.cwd(), function (err, files) {
   });
 });
 
-{% endhighlight %}
+```
 
 ## stat()
 
